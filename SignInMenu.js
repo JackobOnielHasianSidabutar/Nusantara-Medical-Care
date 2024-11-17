@@ -14,7 +14,7 @@ function checkMin8(){
     let noHpValue = noHp.value;
 
     if(noHpValue.length < 8){
-        alert("Username and Password require at least 8 digits!");
+        alert("Phone number require at least 10 digits!");
     }else{
         window.location.href = 'PelangganMain.html';
     }

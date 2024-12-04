@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/dokter/")
+@RequestMapping("/dokter")
 public class DokterController {
 
     @GetMapping("/login")

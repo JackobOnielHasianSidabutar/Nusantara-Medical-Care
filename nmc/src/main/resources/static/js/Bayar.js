@@ -1,9 +1,8 @@
-function showPopup(action) {
-    const popup = document.getElementById("popupBayar");
-    popup.style.display = "flex";
+function showPopup(popupId) {
+    document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
+    document.getElementById(popupId).style.display = 'flex';
 }
 
 function hidePopup() {
-    const popup = document.getElementById("popupBayar");
-    popup.style.display = "none";
+    document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
 }

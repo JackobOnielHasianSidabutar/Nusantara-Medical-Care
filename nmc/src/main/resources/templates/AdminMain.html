@@ -45,6 +45,7 @@
                     <td>Offline</td>
                     <td>
                         <button class="action-btn" onclick="showPopup('Bayar')">Bayar</button>
+                        <button class="daful-btn" onclick="showPopup('popupDaful')">Daftar Ulang</button>
                     </td>
                 </tr>
             </table>
@@ -76,6 +77,74 @@
 
                 <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
                 <button type="submit" class="btn submit-btn">Cetak</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Daful -->
+    <div id="popupDaful" class="popup">
+        <div class="popup-content">
+            <h3>Informasi Pasien</h3>
+            <form>
+                <label>No Rekam Medis:</label>
+                <input type="text" value="NMC-20240101" readonly>
+                <label>Nama Lengkap:</label>
+                <input type="text" value="Feliks Mindo Tua Sitorus" readonly>
+                <label>Jenis Kelamin:</label>
+                <input type="text" value="Laki-laki" readonly>
+                <label>Klinik Tujuan:</label>
+                <input type="text" value="Klinik Mata" readonly>
+                <label>Nama Dokter:</label>
+                <input type="text" value="Dr. Jackob">
+                <label>Tanggal Periksa:</label>
+                <input type="text" value="20/11/2024" readonly>
+                <label>Jam Periksa:</label>
+                <input type="text" value="09.00">
+                <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
+                <button type="submit" class="btn submit-btn">Konfirmasi</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Pasien Step 1 -->
+    <div id="popupPasienStep1" class="popup">
+        <div class="popup-content">
+            <h3>Registrasi Pasien - Langkah 1</h3>
+            <form>
+                <label>No Rekam Medis:</label>
+                <input type="text">
+                <label>Nama Lengkap:</label>
+                <input type="text">
+                <label>Tanggal Lahir:</label>
+                <input type="date">
+                <label>Jenis Kelamin:</label>
+                <select>
+                    <option>Pria</option>
+                    <option>Wanita</option>
+                </select>
+                <label>Nomor Telepon:</label>
+                <input type="text">
+                <button type="button" class="btn close-btn" onclick="hidePopup()">Cancel</button>
+                <button type="button" class="btn submit-btn" onclick="showPopup('popupPasienStep2')">Next</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Pasien Step 2 -->
+    <div id="popupPasienStep2" class="popup">
+        <div class="popup-content">
+            <h3>Registrasi Pasien - Langkah 2</h3>
+            <form>
+                <label>Klinik Tujuan:</label>
+                <input type="text">
+                <label>Nama Dokter:</label>
+                <input type="text">
+                <label>Tanggal Periksa:</label>
+                <input type="date">
+                <label>Jam Periksa:</label>
+                <input type="time">
+                <button type="button" class="btn close-btn" onclick="showPopup('popupPasienStep1')">Back</button>
+                <button type="submit" class="btn submit-btn">Konfirmasi</button>
             </form>
         </div>
     </div>

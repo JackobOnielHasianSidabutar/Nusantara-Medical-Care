@@ -1,23 +1,16 @@
-body {
+body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 0%;
     margin: 0%;
-    box-sizing: border-box;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-header {
+header{
     display: grid;
     grid-template-columns: 50% 50%;
     background-color: white;
-    height: 4.2vw;
 }
 
-#logoNMC {
+#logoNMC{
     position: absolute;
     width: 60px;
     height: 60px;
@@ -25,67 +18,66 @@ header {
     margin-left: 50px;
 }
 
-header h1 {
+header h1{
     color: navy;
-    padding-left: 10vw;
-    padding-top: 1.2vh;
+    padding-left: 10vw; 
 }
 
-header div {
+header div{
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
     padding-left: 10vw;
 }
 
-.item-1 {
+.item-1{
     display: grid;
     grid-column-start: 1;
     padding-left: 5vh;
 }
 
-div .item-2 {
+div .item-2{
     display: grid;
     grid-column-start: 2;
     padding-left: 5vh;
 }
 
-.blue-bar {
+.blue-bar{
     display: grid;
     grid-template-columns: 85% 15%;
     background-color: navy;
     height: 5vw;
 }
 
-h1,
-h2 {
-    margin: 10px 0;
+.wrapper{
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
-h2.center {
-    text-align: center;
+.wrapper img{
+    position: absolute;
+    width: 65vw;
+    height: 75vh;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    table-layout: fixed;
+.wrapper-form h1{
+    margin-left: 200px;
+}
+.wrapper-form span{
+    margin-left: 200px;
 }
 
-th,
-td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    width: 16.6%;
+.wrapper-form .input-box{
+    margin-left: 200px;
 }
 
-th {
-    background-color: #3498db;
-    color: white;
+.wrapper-form .jenis-kelamin{
+    margin-left: 200px;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+.wrapper-form .no-telepon{
+    margin-left: 200px;
+}
+.wrapper-form button{
+    margin-left: 200px;
 }

@@ -62,10 +62,6 @@ div .item-2{
     border: 0;
 }
 
-.klinik-container button:hover{
-    background-color: white;
-  }
-
 .blue-bar .button{
     display: grid;
     grid-column: 2;

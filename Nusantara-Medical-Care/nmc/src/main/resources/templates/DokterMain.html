@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nusantara Medical Care</title>
+    <link rel="stylesheet" href="/css/Dokter-Main-Style.css">
+    <script src="/js/DokterMain.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="/Image Assets/1.png" alt="" id="logoNMC">
+        
+        <h1>Nusantara Medical Care</h1>
+
+        <div class="Informasi-Header">
+            <span class="item-1">Hubungi Kami</span>
+            <span class="item-2">Jam Operasional</span>
+        </div>
+    </header>
+
+    <div class="blue-bar">
+        <span>Selamat datang, dr. <span th:text="${name}">Dokter</span></span>
+        <img src="/Image Assets/icons8-person-50.png" alt="">
+    </div>
+
+    <div class="body-website">
+        <div class="body-title">
+            <h3>Daftar Pasien</h3>
+            <table>
+                <tr>
+                    <th>No Rekam Medis</th>
+                    <th>Nama Pasien</th>
+                    <th>Waktu Konsultasi</th>
+                    <th>Status Pemeriksaan</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>NMC-20240101</td>
+                    <td>Feliks Mindo Tua Sitorus</td>
+                    <td>13/05/2022</td>
+                    <td>-</td>
+                    <td>
+                        <button class="action-btn" onclick="showPopup()">Check</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Popup Check -->
+    <div class="popup-check" hidden>
+        <h2>Informasi Pasien</h2>
+        <div class="popup-check-container">
+            <div class="information">
+                <label for="namaPasien">Nama Pasien:</label>
+                <input type="text" name="namaPasien" id="namaPasien" value="Feliks Mindo Tua Sitorus" disabled>
+                <label for="tanggalLahir">Tanggal Lahir:</label>
+                <input type="text" name="Tanggal Lahir:" id="tanggalLahir" value="32 Desember 1912" disabled>
+                <label for="jenisKelamin">Jenis Kelamin:</label>
+                <input type="text" name="Jenis Kelamin" id="jenisKelamin"value="Pria" disabled>
+                <label for="nomorTelepon">Nomor Telepon:</label>
+                <input type="text" name="Nomor Telepon" id="nomorTelepon" value="087799110022" disabled>
+            </div>
+            <div class="action">
+                <p class="informasi-dasar-label">Informasi Dasar Pasien</p>
+                <img src="/Image Assets/logobukuNMC.png" alt="">
+                <p class="diagnosa-label">Diagnosa Pasien</p>
+                <img src="/Image Assets/logobukuNMC.png" alt="">
+                <p class="resep-obat-label">Resep Obat Pasien</p>
+                <img src="/Image Assets/logobukuNMC.png" alt="" class="resep-obat">
+                <button class="back-button" onclick="hidePopUp()">Back</button>
+                <button class="update-button" onclick="hidePopUp()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Informasi Dasar Pasien -->
+    <!--<div id="popup-informasi-dasar" class="popup hidden">
+        <div class="popup-informasi-dasar-container">
+            <h2>Informasi Dasar Pasien</h2>
+            <form>
+                <label for="tinggi">Tinggi Badan</label>
+                <input type="text" id="tinggi" value="170" readonly>
+
+                <label for="berat">Berat Badan</label>
+                <input type="text" id="berat" value="55" readonly>
+
+                <label for="tekanan">Tekanan Darah</label>
+                <input type="text" id="tekanan" value="Normal" readonly>
+
+                <label for="keluhan">Keluhan</label>
+                <textarea id="keluhan" readonly>Sakit kepala, demam, menggigil</textarea>
+
+                <button type="button" id="closePopup" class="close-button">Back</button>
+            </form>
+        </div>
+    </div>-->
+
+    
+</body>
+</html>

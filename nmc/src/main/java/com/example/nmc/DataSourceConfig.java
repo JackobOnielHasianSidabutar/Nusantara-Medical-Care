@@ -1,6 +1,7 @@
 package com.example.nmc;
 
 import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,19 +9,19 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
 public class DataSourceConfig {
-    @Value("${spring.datasource.url}")
-    private String url;
-    @Value("${spring.datasource.username}")
-    private String username;
-    @Value("${spring.datasource.password}")
-    private String password;
+   @Value("jdbc:postgresql://localhost:5432/NMC")
+   private String url;
+   @Value("$postgres")
+   private String username;
+   @Value("$Thelastjedi123")
+   private String password;
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl(this.url);
-        dataSource.setUsername(this.username);
-        dataSource.setPassword(this.password);
-        return dataSource;
-}
+   @Bean
+   public DataSource dataSource() {
+      DriverManagerDataSource dataSource = new DriverManagerDataSource();
+      dataSource.setUrl(this.url);
+      dataSource.setUsername(this.username);
+      dataSource.setPassword(this.password);
+      return dataSource;
+   }
 }

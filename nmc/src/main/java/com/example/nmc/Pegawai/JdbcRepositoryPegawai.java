@@ -1,7 +1,9 @@
 package com.example.nmc.Pegawai;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 public class JdbcRepositoryPegawai implements PegawaiRepository {
     
@@ -10,14 +12,17 @@ public class JdbcRepositoryPegawai implements PegawaiRepository {
 
     @Override
     public void login(String username, String password) {
-        // String sql = "SELECT * FROM Pegawai WHERE username = ?";
+        String sql = "SELECT * FROM Pegawai WHERE username = ?";
     }
 
     @Override
-    public Object findByUsername(String username) {
-        throw new UnsupportedOperationException("Not supported yet.");
-        String sql = SELECT * FROM 
+    public Optional<Pegawai> findByUsername(String username) {
+        String sql = "SELECT usernamepegawai FROM pegawai  WHERE usernamepegawai = ?";
+        // return sql;
+        return null;
     }
+    
+    
 
     
 }

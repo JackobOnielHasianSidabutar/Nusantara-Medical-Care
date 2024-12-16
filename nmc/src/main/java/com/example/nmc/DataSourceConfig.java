@@ -9,11 +9,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
 public class DataSourceConfig {
-   @Value("jdbc:postgresql://localhost:5432/NMC")
+   @Value("${spring.datasource.url}")
    private String url;
-   @Value("$postgres")
+   @Value("${spring.datasource.username}")
    private String username;
-   @Value("$Thelastjedi123")
+   @Value("${spring.datasource.password}")
    private String password;
 
    @Bean

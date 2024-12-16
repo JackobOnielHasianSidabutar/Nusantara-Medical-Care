@@ -1,13 +1,14 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
+    <title>Register</title>
     <link rel="stylesheet" href="/css/Pelanggan-Register.css">
 </head>
 <body>
     <header>
-        <img src="/static/Image Assets/1.png" alt="" id="logoNMC">
+        <img src="/static/Image Assets/1.png" alt="Logo NMC" id="logoNMC">
 
         <h1>Nusantara Medical Care</h1>
 
@@ -22,36 +23,37 @@
 
     <div class="wrapper">
         <div class="image">
-            <img src="/static/Image Assets/nmcclinic.webp" alt="">
+            <img src="/static/Image Assets/nmcclinic.webp" alt="Clinic Image">
         </div>
         
         <div class="wrapper-form">
-            <form action="">
+            <form action="/pasien/register" method="POST">
                 <h1>Register</h1>
                 <span>Mohon lengkapi data diri Anda!</span>
                 <div class="input-box">
                     <label for="nama">Nama Lengkap</label>
-                    <input type="text" id="nama" >
+                    <input type="text" id="nama" name="nama" required>
                 </div>
                 <div class="input-box">
                     <label for="dob">Tanggal Lahir</label>
-                    <input type="date" id="dob">
+                    <input type="date" id="dob" name="dob" required>
                 </div>
                 <div class="jenis-kelamin">
-                    <button value="Pria">Pria</button>
-                    <Button value="Wanita">Wanita</Button>
+                    <label>Jenis Kelamin:</label>
+                    <div>
+                        <input type="radio" id="pria" name="jenisKelamin" value="P" required>
+                        <label for="pria">Pria</label>
+                        <input type="radio" id="wanita" name="jenisKelamin" value="W" required>
+                        <label for="wanita">Wanita</label>
+                    </div>
                 </div>
-                <div class="no-telepon">
-                    <label for="noHP">Nomor Telepon</label>
-                    <input type="text" id="no-telepon">
+                <div class="input-box">
+                    <label for="no-telepon">Nomor Telepon</label>
+                    <input type="text" id="no-telepon" name="noTelepon" required>
                 </div>
-                <!--Sementara jadi button dulu, nanti akan diubah tipenya ke submit-->
                 <button type="submit" class="register-button">Register</button>
             </form>
         </div>
     </div>
-    
-
-
 </body>
 </html>

@@ -11,9 +11,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 public class DataSourceConfig {
    @Value("jdbc:postgresql://localhost:5432/NMC")
    private String url;
-   @Value("$postgres")
+   @Value("postgres")
    private String username;
-   @Value("$Thelastjedi123")
+   @Value("Thelastjedi123")
    private String password;
 
    @Bean

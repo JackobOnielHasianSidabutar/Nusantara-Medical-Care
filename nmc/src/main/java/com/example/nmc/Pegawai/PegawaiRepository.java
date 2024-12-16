@@ -2,7 +2,10 @@ package com.example.nmc.Pegawai;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface PegawaiRepository {
-    void login(String username, String password);
+    Pegawai login(String username, String password);
     Optional<Pegawai> findByUsername (String username);
 }

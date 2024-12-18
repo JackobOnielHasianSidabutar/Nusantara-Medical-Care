@@ -49,6 +49,13 @@ div .item-2{
     height: 5vw;
 }
 
+.blue-bar span{
+    margin-top: 20px;
+    text-align: right;
+    font-size: 20px;
+    color: white;
+}
+
 .klinik-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;

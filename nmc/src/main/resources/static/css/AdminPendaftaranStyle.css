@@ -1,0 +1,137 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 0%;
+    margin: 0%;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: white;
+}
+
+header h1{
+    color: navy;
+    padding-left: 10vw; 
+}
+
+header div{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    padding-left: 10vw;
+}
+
+
+#logoNMC{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin-top: 12px;
+    margin-left: 50px;
+}
+
+.item-1{
+    display: grid;
+    grid-column-start: 1;
+    padding-left: 5vh;
+}
+
+div .item-2{
+    display: grid;
+    grid-column-start: 2;
+    padding-left: 5vh;
+}
+
+.blue-bar{
+    background-color: navy;
+    height: 5vw;
+}
+
+.light-blue-bar{
+    background-color: #159EEC;
+    height: 6vw;
+}
+
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.wrapper img{
+    width: 50vw;
+    height: 72vh;
+}
+
+form {
+    width: 100%;
+}
+
+table td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+table input[type="text"],
+table input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+table select {
+    width: 100%;
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: white; 
+    font-size: 14px; 
+    appearance: none; 
+
+}
+
+/* Sembunyikan radio button asli */
+.radio-group input[type="radio"] {
+    display: none; /* Sembunyikan input asli */
+}
+
+/* Gaya untuk label agar berbentuk kotak */
+.radio-group label {
+    display: inline-block;
+    width: 200px; /* Lebar kotak */
+    height: 30px; /* Tinggi kotak */
+    border: solid; /* Border biru */
+    border-radius: 5px; /* Membuat kotak */
+    margin-right: 10px; /* Jarak antar opsi */
+    text-align: center; /* Posisi teks di tengah */
+    line-height: 30px; /* Menyesuaikan teks agar rata */
+    font-size: 14px; /* Ukuran teks */
+    cursor: pointer; /* Menambahkan pointer */
+    background-color: #E3E3E3; /* Latar belakang kotak */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Gaya saat radio button dipilih */
+.radio-group input[type="radio"]:checked + label {
+    background-color: navy; /* Warna biru saat dipilih */
+    color: white; /* Warna teks putih saat dipilih */
+    border-color: navy; /* Border tetap biru */
+}
+
+.btn-back{
+    width: 250px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-submit{
+    width: 250px;
+    height: 40px;
+    background-color: navy;
+    color: white;
+    border-radius: 5px;
+}

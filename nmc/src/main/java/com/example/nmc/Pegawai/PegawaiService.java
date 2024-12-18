@@ -12,7 +12,7 @@ public class PegawaiService {
     public Pegawai login(String username, String password) {
         Optional<Pegawai> pegawai = (Optional<Pegawai>) pegawaiRepository.findByUsername(username);
         try {
-            if(pegawai.isPresent()) {
+            if(pegawai.isPresent() && pegawai.get().getPasswordpegawai().equals(password)) {
                 return pegawai.get();
             }
         } catch (Exception e) {
@@ -21,5 +21,9 @@ public class PegawaiService {
         }
 
         return null;
+    }
+
+    public Optional<Pegawai> findByUsername(String username) {
+        return pegawaiRepository.findByUsername(username);
     }
 }

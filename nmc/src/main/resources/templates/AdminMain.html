@@ -58,20 +58,25 @@
     <div id="popupBayar" class="popup">
         <div class="popup-content">
             <h3 id="popupTitle">Rincian Pembayaran</h3>
-            <form method="post" action="bayar" th:object="${transaksi}">
+            <form>
+                <label for="rekamMedis">No Rekam Medis:</label>
+                <input type="text" id="rekamMedis" value="NMC-20240101" readonly>
+
+                <label for="namaPasien">Nama Lengkap:</label>
+                <input type="text" id="namaPasien" value="Feliks Mindo Tua Sitorus" readonly>
 
                 <label for="tanggalPembayaran">Tanggal Pembayaran:</label>
-                <input type="date" name="tanggaltransaksi" id="namaPasien">
+                <input type="text" id="namaPasien" value="13/05/2022" readonly>
+
+                <label for="biayaAdministrasi">Biaya Administrasi:</label>
+                <input type="text" id="namaPasien" value="Rp 50.000" readonly>
+
+                <label for="biayaTindakan">Biaya Tindakan:</label>
+                <input type="text" id="namaPasien" value="Rp 50.000" readonly>
 
                 <label for="totalPembayaran">Total Pembayaran:</label>
-                <input type="number" name="totaltransaksi" id="totalPembayaran" step="0.01">
+                <input type="text" id="totalPembayaran" value="">
 
-                <p>Metode Pembayaran</p>
-                    <input type="radio" name="jenistransaksi" value="tunai" id="Tunai" required>
-                    <label for="Tunai">Tunai</label>
-                    <input type="radio" name="jenistransaksi" value="transfer" id="non-Tunai" required>
-                    <label for="non-Tunai">Non Tunai</label>
-                
                 <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
                 <button type="submit" class="btn submit-btn">Konfirmasi</button>
             </form>

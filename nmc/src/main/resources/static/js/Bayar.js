@@ -11,10 +11,12 @@ function hidePopup() {
     popup.setAttribute('hidden', 'true'); 
 }
 
-function showingPopup(popupId) {
+function showingPopup(popupId, norekammedispasien=null) {
     document.getElementById(popupId).classList.remove('hidden');
-    console.log(popupId);
-    document.getElementById(popupId).removeAttribute('hidden')
+    document.getElementById(popupId).removeAttribute('hidden');
+    if(document.getElementById('norekammedispasien')&& norekammedispasien!=null){
+        document.getElementById('norekammedispasien').value=norekammedispasien;
+    }
     // Tutup semua popup terlebih dahulu
     // document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
     // Tampilkan popup yang dipilih berdasarkan ID
@@ -23,5 +25,16 @@ function showingPopup(popupId) {
 
 function hidingPopup(popupId) {
     document.getElementById(popupId).classList.add('hidden');
-    console.log(popupId);
 }
+
+document.querySelectorAll('.action-btn-rekammedis').forEach(function (btn){
+    btn.addEventListener('click', function(event) {
+        console.log(event.target.getAttribute('data-norekammedispasien'));
+
+        document.getElementById('norekammedispasien').value = event.target.getAttribute('data-norekammedispasien');
+        document.getElementById('tanggalperiksa').value = event.target.getAttribute('data-tglpendaftaran');
+
+        document.getElementById('popup-informasi-dasar').classList.remove('hidden');
+        document.getElementById('popup-informasi-dasar').removeAttribute('hidden');
+    });
+});

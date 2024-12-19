@@ -13,15 +13,25 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/dokter")
 public class DokterController {
 
-    @GetMapping("/login")
-    public String logIn() {
-        return "DokterSignIn";
+    // @GetMapping("/login")
+    // public String logIn() {
+    //     return "DokterSignIn";
+    // }
+
+    // @PostMapping("/main")
+    // public String dokterMain(@RequestParam String usernameDokter, @RequestParam String passwordDokter, HttpSession session, Model model) {
+    //     model.addAttribute("name", usernameDokter);
+    //     session.setAttribute("username", usernameDokter);
+    //     return "DokterMain"; 
+    // }
+
+    @GetMapping("main")
+    public String indexMain() {
+        return "DokterMain";
     }
 
-    @PostMapping("/main")
-    public String dokterMain(@RequestParam String usernameDokter, @RequestParam String passwordDokter, HttpSession session, Model model) {
-        model.addAttribute("name", usernameDokter);
-        session.setAttribute("username", usernameDokter);
-        return "DokterMain"; 
+    @GetMapping("/jadwal")
+    public String indexJadwal () {
+        return "JadwalDokter";
     }
 }

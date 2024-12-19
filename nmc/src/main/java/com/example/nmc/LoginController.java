@@ -11,18 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.nmc.Pegawai.Pegawai;
 import com.example.nmc.Pegawai.PegawaiService;
 
-// import com.example.nmc.Pegawai.Pegawai;
-// import com.example.nmc.Pegawai.PegawaiService;
-
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/pegawai")
 public class LoginController {
 
-    private final PegawaiService pegawaiService;
+    @Autowired
+    private PegawaiService pegawaiService;
 
     @GetMapping("/dokter/login")
     public String logInDokter() {

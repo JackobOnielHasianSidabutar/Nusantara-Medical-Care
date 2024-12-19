@@ -13,15 +13,15 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/perawat")
 public class PerawatController {
 
-    @GetMapping("/login")
-    public String logIn() {
-        return "PerawatSignIn";
-    }
+    // @GetMapping("/login")
+    // public String logIn() {
+    //     return "PerawatSignIn";
+    // }
 
-    @PostMapping("/main")
-    public String dokterMain(@RequestParam String usernamePerawat, @RequestParam String passwordPerawat, HttpSession session, Model model) {
-        model.addAttribute("name", usernamePerawat);
-        session.setAttribute("username", usernamePerawat);
-        return "PerawatMain"; 
-    }
+    // @PostMapping("/main")
+    // public String dokterMain(@RequestParam String usernamePerawat, @RequestParam String passwordPerawat, HttpSession session, Model model) {
+    //     model.addAttribute("name", usernamePerawat);
+    //     session.setAttribute("username", usernamePerawat);
+    //     return "PerawatMain"; 
+    // }
 }

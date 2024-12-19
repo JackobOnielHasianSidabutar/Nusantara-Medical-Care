@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/pegawai")
 public class PegawaiController {
 
-    @GetMapping("/dokter/login")
-    public String loginDokter () {
-        return "DokterSignIn";
-    }
+    // @GetMapping("/dokter/login")
+    // public String loginDokter () {
+    //     return "DokterSignIn";
+    // }
 
-    @GetMapping("/perawat/login")
-    public String loginPerawat () {
-        return "PerawatSignIn";
-    }
+    // @GetMapping("/perawat/login")
+    // public String loginPerawat () {
+    //     return "PerawatSignIn";
+    // }
 
 
 }

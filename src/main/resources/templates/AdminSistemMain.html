@@ -1,0 +1,73 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nusantara Medical Care</title>
+    <link rel="stylesheet" th:href="@{/css/AdminSistem-Main-Style.css}">
+    <script th:src="@{/js/AdminSistemMain.js}" defer></script>
+</head>
+<body>
+    <header>
+        <img src="/Image Assets/1.png" alt="" id="logoNMC">
+        
+        <h1>Nusantara Medical Care</h1>
+
+        <div class="Informasi-Header">
+            <span class="item-1">Hubungi Kami</span>
+            <span class="item-2">Jam Operasional</span>
+        </div>
+    </header>
+
+    <div class="blue-bar">
+        <span>Selamat datang, Admin</span>
+        <img src="/Image Assets/icons8-person-50.png" alt="">
+    </div>
+
+    <div class="body-website">
+        <div class="body-title">
+            <h3>Daftar Dokter</h3>
+            <table>
+                <tr>
+                    <th>ID Dokter</th>
+                    <th>Nama Dokter</th>
+                    <th>Spesialis Dokter</th>
+                    <th>Jadwal Mulai</th>
+                    <th>Jadwal Akhir</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <tr th:each="daftar : ${daftarList}">
+                        <td th:text="${daftar.iddokter}">N/A</td>
+                        <td th:text="${daftar.namapegawai}">N/A</td>
+                        <td th:text="${daftar.spesialisdokter}">N/A</td>
+                        <td th:text="${daftar.jadwalmulai}">N/A</td>
+                        <td th:text="${daftar.jadwalakhir}">N/A</td>
+                        <td>
+                            <button class="action-btn" onclick="togglePopup('popupJadwal', true)" data-id="${daftar.iddokter}">Edit</button>
+                        </td>
+                    </tr>  
+                </tr>
+            </table>
+        </div>
+    </div>
+        <!-- Popup Form -->
+    <div id="popupJadwal" class="popup hidden" hidden>
+        <div class="popup-content">
+            <h3>Masukkan Jadwal Dokter</h3>
+            <form id="jadwalForm" action="adminsistem/jadwal" method="POST">
+                <input type="hidden" name="iddokter" id="iddokter"/>
+
+                <label for="jamAwal">Jam Awal:</label>
+                <input type="time" id="jamAwal" name="jamAwal" required>
+
+                <label for="jamAkhir">Jam Akhir:</label>
+                <input type="time" id="jamAkhir" name="jamAkhir" required>
+
+                <button type="button" class="btn close-btn">Kembali</button>
+                <button type="submit" class="btn submit-btn">Simpan Jadwal</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

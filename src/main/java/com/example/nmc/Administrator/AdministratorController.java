@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -143,5 +144,6 @@ public class AdministratorController {
         model.addAttribute("errorMessage", "Terjadi kesalahan saat menyimpan pendaftaran.");
         return "redirect:/administrator/pendaftaran?error=true";
     }
+
 }
 }

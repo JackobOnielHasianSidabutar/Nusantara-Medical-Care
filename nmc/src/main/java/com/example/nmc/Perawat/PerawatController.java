@@ -3,7 +3,9 @@ package com.example.nmc.Perawat;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,29 +21,26 @@ import com.example.nmc.Perawat.PerawatService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/perawat")
+@RequestMapping("/pegawai/perawat")
 public class PerawatController {
 
-    private final PegawaiService pegawaiService;
-    private final PerawatService perawatService;
+    @Autowired
+    PegawaiService pegawaiService;
 
-
-    @PostMapping("/main")
-    public String dokterMain(@RequestParam String usernamePerawat, @RequestParam String passwordPerawat, HttpSession session, Model model) {
-        model.addAttribute("name", usernamePerawat);
-        session.setAttribute("username", usernamePerawat);
-        return "PerawatMain"; 
-    }
+    @Autowired
+    PerawatService perawatService;
+    
     @GetMapping("/main")
     public String dokterMain(HttpSession session, Model model) {
         List<Map<String, Object>> listPasien= perawatService.findAll();
-        model.addAttribute("name", usernamePerawat);
-        session.setAttribute("username", usernamePerawat);
+        // model.addAttribute("name", usernamePerawat);
+        // session.setAttribute("username", usernamePerawat);
         model.addAttribute("listPasien", listPasien);
         System.out.println("list: "+ perawatService.findAll());
         return "PerawatMain"; 
     }
-    @PostMapping("upload")
+    
+    @PostMapping("/upload")
     public String save(
             @RequestParam("norekammedispasien") String norekammedispasien,
             @RequestParam("tanggalperiksa") String tanggalperiksa,
@@ -75,7 +74,7 @@ public class PerawatController {
             e.printStackTrace();
             System.out.println("Error when save testing: " + e.getMessage());
         }
-        return "redirect:/perawat/main";
+        return "redirect:/pegawai/perawat/main";
     }
 }
 

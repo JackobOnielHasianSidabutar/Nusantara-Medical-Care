@@ -33,43 +33,55 @@
                     <th>Waktu Konsultasi</th>
                     <th>Action</th>
                 </tr>
-                <tr>
+                <tr th:each="pasien : ${listPasien}">
+                    <td th:text="${pasien['norekammedispasien']}"></td>
+                    <td th:text="${pasien.['namapasien']}"></td>
+                    <td th:text="${pasien.['tglpendaftaran']}"></td>
+                    <td>
+                        <button
+                        data-popup="popup-informasi-dasar"  
+                        th:data-norekammedispasien="${pasien['norekammedispasien']}"
+                        th:data-namapasien="${pasien.['namapasien']}"
+                        th:data-tglpendaftaran="${pasien.['tglpendaftaran']}"
+                        class="action-btn action-btn-rekammedis">Check</button>
+                    </td>
+                </tr>
+                <!-- <tr>
                     <td>NMC-20240101</td>
                     <td>Feliks Mindo Tua Sitorus</td>
                     <td>13/05/2022</td>
-                    <td>
-                        <button class="action-btn" onclick="showPopup()">Check</button>
-                    </td>
-                </tr>
+                </tr> -->
             </table>
         </div>
     </div>
 
     <!-- Popup Check -->
-    <div id="popupBayar" class="popup">
+    <div  id="popup-informasi-dasar" class="popup-check" hidden>
       <div class="popup-content">
           <h3 id="popupTitle">Informasi Dasar Pasien</h3>
-          <form>
-              <label for="rekamMedis">Tinggi Badan:</label>
-              <input type="text" id="rekamMedis">
+          <form action="/perawat/upload" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="norekammedispasien" id="norekammedispasien"/>
+            <input type="hidden" name="tanggalperiksa" id="tanggalperiksa"/>
+              <label for="tinggibadan">Tinggi Badan:</label>
+              <input name="tinggibadan" type="text" id="tinggibadan">
 
-              <label for="namaPasien">Berat Badan:</label>
-              <input type="text" id="namaPasien">
+              <label for="beratbadan">Berat Badan:</label>
+              <input name="beratbadan" type="text" id="beratbadan">
 
-              <label for="totalPembayaran">Suhu Badan:</label>
-              <input type="text" id="totalPembayaran">
+              <label for="suhubadan">Suhu Badan:</label>
+              <input name="suhubadan" type="text" id="suhubadan">
 
-              <label for="tanggalPembayaran">Tekanan Darah:</label>
-              <input type="text" id="namaPasien">
+              <label for="tekanandarah">Tekanan Darah:</label>
+              <input name="tekanandarah" type="text" id="tekanandarah">
 
-              <label for="biayaAdministrasi">Keluhan:</label>
-              <input type="text" id="namaPasien">
+              <label for="keluhan">Keluhan:</label>
+              <input name="keluhan" type="text" id="keluhan">
 
-              <label for="biayaTindakan">Hasil Pemeriksaan Laboratorium:</label>
-              <input type="file" id="namaPasien">
+              <label for="hasilLab">Hasil Pemeriksaan Laboratorium:</label>
+              <input name="hasilLab" type="file" id="hasilLab">
 
-              <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
-              <button type="submit" class="btn submit-btn">Update</button>
+              <button class="btn close-btn" type="button" onclick="hidePopup()">Kembali</button>
+              <button class="btn submit-btn" type="submit">Update</button>
           </form>
       </div>
   </div>

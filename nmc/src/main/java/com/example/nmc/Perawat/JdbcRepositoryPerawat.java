@@ -32,7 +32,7 @@ public class JdbcRepositoryPerawat implements PerawatRepository {
         String sql="INSERT INTO informasidasarpasien (norekammedispasien, idperawat, tanggalperiksa, tinggibadan, tekanandarah, beratbadan, suhutubuh, keluhan, hasillab) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try{
-            jdbcTemplate.update(sql, informasi.getNorekammedispasien(), informasi.getIdperawat(), sdf.parse(informasi.getTanggalPeriksa()), informasi.getTinggiBadan(), informasi.getTekananDarah(), informasi.getBeratBadan(), informasi.getSuhuTubuh(), informasi.getKeluhan(), informasi.getHasilLab());
+            jdbcTemplate.update(sql, informasi.getNoRekamMedisPasien(), informasi.getIdPerawat(), sdf.parse(informasi.getTanggalPeriksa()), informasi.getTinggiBadan(), informasi.getTekananDarah(), informasi.getBeratBadan(), informasi.getSuhuTubuh(), informasi.getKeluhan(), informasi.getHasilLab());
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

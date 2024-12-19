@@ -37,7 +37,7 @@ public class LoginController {
         return "PerawatSignIn";
     }
 
-    @PostMapping("/perawat/main")
+    @PostMapping("/perawat/login")
     public String perawatMain(@RequestParam String usernamePerawat, @RequestParam String passwordPerawat, HttpSession session, Model model) {
         Pegawai pegawai = pegawaiService.findByUsername(usernamePerawat).orElse(null);
         model.addAttribute("name", pegawai.getNamapegawai());
@@ -48,6 +48,10 @@ public class LoginController {
             System.out.println("Password cocok.");
             model.addAttribute("name", pegawai.getNamapegawai());
             session.setAttribute("username", usernamePerawat);  // Menyimpan username di session
+            List<ListPasienDTO> listPasien = listPasienService.getListPasienHariIni();
+
+            // Tambahkan data ke model
+            model.addAttribute("listPasien", listPasien);
             return "PerawatMain";  // Halaman utama setelah login sukses
         } else {
             System.out.println("Password salah.");

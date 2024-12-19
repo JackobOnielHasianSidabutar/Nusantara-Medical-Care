@@ -4,14 +4,10 @@ import lombok.Data;
 
 @Data
 public class Dokter {
-    private String idDokter;
+    private int idDokter;
+    private int idKlinik;
     private String spesialisDokter;
-    private String idKlinik;
-
-    public Dokter(String idDokter, String spesialisDokter, String idKlinik) {
-        this.idDokter = idDokter;
-        this.spesialisDokter = spesialisDokter;
-        this.idKlinik = idKlinik;
-    }
+    private String jadwalMulai;
+    private String jadwalAkhir;
 
 }

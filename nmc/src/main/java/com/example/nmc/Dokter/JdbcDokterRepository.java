@@ -19,7 +19,6 @@ public class JdbcDokterRepository implements DokterRepository{
 
     @Override
     public Optional<Dokter> findByPegawaiId(int pegawaiId) {
-        // TODO Auto-generated method stub
         String sql="SELECT * FROM dokter WHERE idpegawai = ?";
         try{
             Dokter dokter = jdbcTemplate.queryForObject(sql, dokterRowMapper, pegawaiId);
@@ -35,7 +34,6 @@ public class JdbcDokterRepository implements DokterRepository{
     private RowMapper<Dokter> dokterRowMapper = (rs, rowNum) -> {
         Dokter dokter = new Dokter();
         dokter.setIdDokter(rs.getInt("iddokter"));
-        dokter.setIdPegawai(rs.getInt("idpegawai"));  
         dokter.setIdKlinik((rs.getInt("idklinik")));
         dokter.setSpesialisDokter(rs.getString("spesialisdokter"));
         dokter.setJadwalMulai(rs.getString("jadwalmulai"));

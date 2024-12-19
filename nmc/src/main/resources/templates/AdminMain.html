@@ -58,21 +58,20 @@
     <div id="popupBayar" class="popup">
         <div class="popup-content">
             <h3 id="popupTitle">Rincian Pembayaran</h3>
-            <form method="post" action="bayar">
+            <form method="post" action="bayar" th:object="${transaksi}">
 
                 <label for="tanggalPembayaran">Tanggal Pembayaran:</label>
-                <input type="date" id="namaPasien">
+                <input type="date" name="tanggaltransaksi" id="namaPasien">
 
                 <label for="totalPembayaran">Total Pembayaran:</label>
-                <input type="text" id="totalPembayaran" value="">
+                <input type="number" name="totaltransaksi" id="totalPembayaran" step="0.01">
 
-                <p>
-                    Metode Pembayaran
-                    <input type="radio" name="pembayaran" value="cash" id="Tunai">
+                <p>Metode Pembayaran</p>
+                    <input type="radio" name="jenistransaksi" value="tunai" id="Tunai" required>
                     <label for="Tunai">Tunai</label>
-                    <input type="radio" name="pembayaran" value="transfer" id="non-Tunai">
+                    <input type="radio" name="jenistransaksi" value="transfer" id="non-Tunai" required>
                     <label for="non-Tunai">Non Tunai</label>
-                </p>
+                
                 <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
                 <button type="submit" class="btn submit-btn">Konfirmasi</button>
             </form>

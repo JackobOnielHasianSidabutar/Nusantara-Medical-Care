@@ -4,11 +4,10 @@ import lombok.Data;
 
 @Data
 public class Dokter {
-    public String name;
-    public String password;
-
-    public Dokter(String name, String password){
-        this.name = name;
-        this.password = password;
-    }
+    private int idDokter;
+    private int idPegawai;
+    private int idKlinik;
+    private String spesialisDokter;
+    private String jadwalMulai;
+    private String jadwalAkhir;
 }

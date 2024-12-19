@@ -63,20 +63,20 @@
             </div>
             <div class="action">
                 <p class="informasi-dasar-label">Informasi Dasar Pasien</p>
-                <img src="/Image Assets/logobukuNMC.png" alt="">
+                <img src="/Image Assets/logobukuNMC.png" alt="" onclick="showingPopup('popup-informasi-dasar')">
                 <p class="diagnosa-label">Diagnosa Pasien</p>
-                <img src="/Image Assets/logobukuNMC.png" alt="">
+                <img src="/Image Assets/logobukuNMC.png" alt="" onclick="showingPopup('popup-diagnosa')">
                 <p class="resep-obat-label">Resep Obat Pasien</p>
-                <img src="/Image Assets/logobukuNMC.png" alt="" class="resep-obat">
-                <button class="back-button" onclick="hidePopUp()">Back</button>
-                <button class="update-button" onclick="hidePopUp()">Update</button>
+                <img src="/Image Assets/logobukuNMC.png" alt="" class="resep-obat" onclick="showingPopup('popup-resep')">
+                <button class="back-button" onclick="hidePopup()">Back</button>
+                <button class="update-button" onclick="hidePopup()">Update</button>
             </div>
         </div>
     </div>
 
     <!-- Popup Informasi Dasar Pasien -->
-    <!--<div id="popup-informasi-dasar" class="popup hidden">
-        <div class="popup-informasi-dasar-container">
+    <div id="popup-informasi-dasar" class="popup hidden" >
+        <div class="popup-content">
             <h2>Informasi Dasar Pasien</h2>
             <form>
                 <label for="tinggi">Tinggi Badan</label>
@@ -86,15 +86,43 @@
                 <input type="text" id="berat" value="55" readonly>
 
                 <label for="tekanan">Tekanan Darah</label>
-                <input type="text" id="tekanan" value="Normal" readonly>
+                <input type="text" id="tekanan" value="123/80 mmHg" readonly>
 
                 <label for="keluhan">Keluhan</label>
                 <textarea id="keluhan" readonly>Sakit kepala, demam, menggigil</textarea>
 
-                <button type="button" id="closePopup" class="close-button">Back</button>
+                <button class="btn close-btn" type="button" onclick="hidingPopup('popup-informasi-dasar')">Back</button>
             </form>
         </div>
-    </div>-->
+    </div>
+
+    <!-- Popup Diagnosa -->
+    <div id="popup-diagnosa" class="popup hidden">
+        <div class="popup-content">
+            <form action="/dokter/diagnosa" method="POST">
+                <h3>Diagnosa Pasien</h3>
+                <label for="diagnosa-input">Diagnosa:</label>
+                <textarea id="diagnosa-input" name="diagnosa" rows="5" placeholder="Masukkan diagnosa pasien..."></textarea>
+                <div style="text-align: right; margin-top: 10px;">
+                <button class="btn close-btn" type="button" onclick="hidingPopup('popup-diagnosa')">Close</button>
+                <button class="btn submit-btn" type="submit">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Resep Obat -->
+    <div id="popup-resep" class="popup hidden">
+        <div class="popup-content">
+            <h3>Resep Obat</h3>
+            <label for="resep-input">Resep Obat:</label>
+            <textarea id="resep-input" rows="5" placeholder="Masukkan resep obat untuk pasien..."></textarea>
+            <div style="text-align: right; margin-top: 10px;">
+                <button class="btn close-btn" type="button" onclick="hidingPopup('popup-resep')">Close</button>
+                <button class="btn submit-btn" onclick="submitResep()">Submit</button>
+            </div>
+        </div>
+    </div>
 
     
 </body>

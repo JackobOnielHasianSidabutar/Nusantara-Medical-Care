@@ -1,10 +1,10 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nusantara Medical Care</title>
-    <link rel="stylesheet" href="/css/AdminMainStyle.css">
-    <script src="/js/Bayar.js" defer></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nusantara Medical Care</title>
+        <link rel="stylesheet" th:href="@{/css/AdminMainStyle.css}">
+        <script th:src="@{/js/AdminMain.js}" defer></script>
 </head>
 <body>
     <header>
@@ -39,13 +39,16 @@
                     <th>Action</th>
                 </tr>
                 <tr>
-                    <td>NMC-20240101</td>
-                    <td>Feliks Mindo Tua Sitorus</td>
-                    <td>13/05/2022</td>
-                    <td>Offline</td>
-                    <td>
-                        <button class="action-btn" onclick="showPopup('Bayar')">Bayar</button>
-                    </td>
+                    <tr th:each="pendaftaran : ${pendaftaranList}">
+                        <td th:text="${pendaftaran.norekammedispasien}">N/A</td>
+                        <td th:text="${pendaftaran.namapasien}">N/A</td>
+                        <td th:text="${pendaftaran.tglpendaftaran}">N/A</td>
+                        <td th:text="${pendaftaran.statuspendaftaran}">N/A</td>
+                        <td>
+                            <button class="action-btn" onclick="showPopup('popupBayar')">Bayar</button>
+                            <button class="action-btn" onclick="showPopup('popupDaful')">Daftar Ulang</button>
+                        </td>
+                    </tr>  
                 </tr>
             </table>
         </div>
@@ -55,27 +58,88 @@
     <div id="popupBayar" class="popup">
         <div class="popup-content">
             <h3 id="popupTitle">Rincian Pembayaran</h3>
-            <form>
-                <label for="rekamMedis">No Rekam Medis:</label>
-                <input type="text" id="rekamMedis" value="NMC-20240101" readonly>
-
-                <label for="namaPasien">Nama Lengkap:</label>
-                <input type="text" id="namaPasien" value="Feliks Mindo Tua Sitorus" readonly>
+            <form method="post" action="bayar">
 
                 <label for="tanggalPembayaran">Tanggal Pembayaran:</label>
-                <input type="text" id="namaPasien" value="13/05/2022" readonly>
-
-                <label for="biayaAdministrasi">Biaya Administrasi:</label>
-                <input type="text" id="namaPasien" value="Rp 50.000" readonly>
-
-                <label for="biayaTindakan">Biaya Tindakan:</label>
-                <input type="text" id="namaPasien" value="Rp 50.000" readonly>
+                <input type="date" id="namaPasien">
 
                 <label for="totalPembayaran">Total Pembayaran:</label>
                 <input type="text" id="totalPembayaran" value="">
 
+                <p>Metode Pembayaran</p>
+                    <input type="radio" name="pembayaran" value="Tunai" id="Tunai">
+                    <label for="Tunai">Tunai</label>
+                    <input type="radio" name="pembayaran" value="non-Tunai" id="non-Tunai">
+                    <label for="non-Tunai">Non Tunai</label>
+                
                 <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
-                <button type="submit" class="btn submit-btn">Cetak</button>
+                <button type="submit" class="btn submit-btn">Konfirmasi</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Daful -->
+    <div id="popupDaful" class="popup">
+        <div class="popup-content">
+            <h3>Informasi Pasien</h3>
+            <form>
+                <label>No Rekam Medis:</label>
+                <input type="text" value="NMC-20240101" readonly>
+                <label>Nama Lengkap:</label>
+                <input type="text" value="Feliks Mindo Tua Sitorus" readonly>
+                <label>Jenis Kelamin:</label>
+                <input type="text" value="Laki-laki" readonly>
+                <label>Klinik Tujuan:</label>
+                <input type="text" value="Klinik Mata" readonly>
+                <label>Nama Dokter:</label>
+                <input type="text" value="Dr. Jackob">
+                <label>Tanggal Periksa:</label>
+                <input type="text" value="20/11/2024" readonly>
+                <label>Jam Periksa:</label>
+                <input type="text" value="09.00">
+                <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
+                <button type="submit" class="btn submit-btn">Konfirmasi</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Pasien Step 1 -->
+    <div id="popupPasienStep1" class="popup" hidden>
+        <div class="popup-content">
+            <h3>Registrasi Pasien</h3>
+            <form>
+                <label>Nama Lengkap:</label>
+                <input type="text">
+                <label>Tanggal Lahir:</label>
+                <input type="date">
+                <label>Jenis Kelamin:</label>
+                <select>
+                    <option>Pria</option>
+                    <option>Wanita</option>
+                </select>
+                <label>Nomor Telepon:</label>
+                <input type="text">
+                <button type="button" class="btn close-btn" onclick="hidePopup()">Cancel</button>
+                <button type="button" class="btn submit-btn" onclick="showPopup('popupPasienStep2')">Next</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Pasien Step 2 -->
+    <div id="popupPasienStep2" class="popup" hidden>
+        <div class="popup-content">
+            <h3>Registrasi Pasien</h3>
+            <form>
+                <label>Klinik Tujuan:</label>
+                <input type="text">
+                <label>Nama Dokter:</label>
+                <input type="text">
+                <label>Tanggal Periksa:</label>
+                <input type="date">
+                <label>Jam Periksa:</label>
+                <input type="time">
+                <button type="button" class="btn close-btn" onclick="showPopup('popupPasienStep1')">Back</button>
+                <button type="submit" class="btn submit-btn">Konfirmasi</button>
             </form>
         </div>
     </div>

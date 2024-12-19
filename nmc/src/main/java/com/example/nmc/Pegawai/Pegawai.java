@@ -8,4 +8,5 @@ public class Pegawai {
     private String usernamepegawai;
     private String passwordpegawai;
     private String namapegawai;
+    private String role;
 }

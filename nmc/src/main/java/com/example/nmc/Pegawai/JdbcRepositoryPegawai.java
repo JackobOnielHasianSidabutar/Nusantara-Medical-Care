@@ -42,4 +42,14 @@ public class JdbcRepositoryPegawai implements PegawaiRepository {
         pegawai.setNamapegawai(rs.getString("namapegawai"));
         return pegawai;
     };
+
+    private RowMapper<Pegawai> AddedPatientRowMapper = (rs, rowNum) -> {
+        Pegawai pegawai = new Pegawai();
+        pegawai.setIdpegawai(rs.getInt("idpegawai")); 
+        pegawai.setUsernamepegawai(rs.getString("usernamepegawai"));  
+        pegawai.setPasswordpegawai(rs.getString("passwordpegawai"));
+        pegawai.setNamapegawai(rs.getString("namapegawai"));
+        return pegawai;
+    };
+    
 }

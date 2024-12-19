@@ -34,14 +34,22 @@
                     <th>Status Pemeriksaan</th>
                     <th>Action</th>
                 </tr>
-                <tr>
-                    <td>NMC-20240101</td>
-                    <td>Feliks Mindo Tua Sitorus</td>
-                    <td>13/05/2022</td>
-                    <td>-</td>
+                <tr th:each="pasien : ${listPasien}">
+                    <td th:text="${pasien.norekammedispasien}"></td>
+                    <td th:text="${pasien.namapasien}"></td>
+                    <td th:text="${pasien.tglpendaftaran}"></td>
+                    <td th:text="${pasien.statuspendaftaran}">belum</td>
                     <td>
                         <button class="action-btn" onclick="showPopup()">Check</button>
                     </td>
+                </tr>
+
+                <tr th:each="pasien : ${pasienDetails}">
+                    <td th:text="${pasien.norekammedis}">N/A</td>
+                    <td th:text="${pasien.namapasien}">N/A</td>
+                    <td th:text="${pasien.waktukonsultasi}">N/A</td>
+                    <td th:text="${pasien.statuspemeriksaan}">-</td>
+                    <td><button class="action-btn" onclick="showPopup()">Check</button></td>
                 </tr>
             </table>
         </div>
@@ -63,7 +71,7 @@
             </div>
             <div class="action">
                 <p class="informasi-dasar-label">Informasi Dasar Pasien</p>
-                <img src="/Image Assets/logobukuNMC.png" alt="">
+                <img src="/Image Assets/logobukuNMC.png" alt="" onclick="showPopup()">
                 <p class="diagnosa-label">Diagnosa Pasien</p>
                 <img src="/Image Assets/logobukuNMC.png" alt="">
                 <p class="resep-obat-label">Resep Obat Pasien</p>
@@ -75,7 +83,7 @@
     </div>
 
     <!-- Popup Informasi Dasar Pasien -->
-    <!--<div id="popup-informasi-dasar" class="popup hidden">
+    <div id="popup-informasi-dasar" class="popup-hidden" hidden>
         <div class="popup-informasi-dasar-container">
             <h2>Informasi Dasar Pasien</h2>
             <form>
@@ -94,7 +102,7 @@
                 <button type="button" id="closePopup" class="close-button">Back</button>
             </form>
         </div>
-    </div>-->
+    </div>
 
     
 </body>

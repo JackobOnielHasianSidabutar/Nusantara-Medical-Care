@@ -1,10 +1,11 @@
 package com.example.nmc.Perawat;
-
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-
-import com.example.nmc.Table.PendaftaranPasien;
-
+import org.springframework.stereotype.Repository;
+import com.example.nmc.InformasiDasarPasien.InformasiDasarPasien;
+import com.example.nmc.Pendaftaran.PasienPendaftaran;
 public interface PerawatRepository {
-    List<PendaftaranPasien> listPasien();
+    List<Map<String, Object>> listPasien();
+    void save(InformasiDasarForm informasi);
 }

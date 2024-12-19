@@ -26,7 +26,14 @@ function showingPopup(popupId, norekammedispasien=null) {
 function hidingPopup(popupId) {
     document.getElementById(popupId).classList.add('hidden');
 }
-
+document.addEventListener("DOMContentLoaded", function () {
+    const addPasienButton = document.querySelector(".addPasien");
+    if (addPasienButton) {
+        addPasienButton.addEventListener("click", function () {
+            window.location.href = "/administrator/pendaftaran";
+        });
+    }
+});
 document.querySelectorAll('.action-btn-rekammedis').forEach(function (btn){
     btn.addEventListener('click', function(event) {
         console.log(event.target.getAttribute('data-norekammedispasien'));

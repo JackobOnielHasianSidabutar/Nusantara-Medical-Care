@@ -38,5 +38,4 @@ public class PasienService {
     public boolean isPhoneNumberRegistered(String noHP) {
         return pasienRepository.login(noHP) != null;
     }
-    
 }

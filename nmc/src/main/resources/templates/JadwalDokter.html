@@ -1,16 +1,17 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nusantara Medical Care</title>
-    <link rel="stylesheet" href="/css/JadwalDokterStyle.css">
-    <script src="/js/scriptjadwal.js" defer></script>
+    <link rel="stylesheet" href="/css/AdminPendaftaranStyle.css">
+    <script src="/js/JadwalDokter.js" defer></script>
 </head>
-<body>    
+<body>
     <header>
-        <img src="Image Assets/1.png" alt="Logo NMC" id="logoNMC">
+        <img src="/Image Assets/1.png" alt="" id="logoNMC">
+
         <h1>Nusantara Medical Care</h1>
+
         <div class="Informasi-Header">
             <span class="item-1">Hubungi Kami</span>
             <span class="item-2">Jam Operasional</span>
@@ -18,45 +19,42 @@
     </header>
 
     <div class="blue-bar">
-        <span>Selamat datang, <span th:text="${name}">Dokter</span></span>
-        <img src="/Image Assets/icons8-person-50.png" alt="">
     </div>
 
-    <main>
-        <div class="doctor-card">
-            <img src="Image Assets/doctor.jpg" alt="Dr. Jackob" class="doctor-photo">
-            <div class="doctor-name">Jackob, Sp.P.</div>
+    <div class="light-blue-bar">
+    </div>
+
+    <div class="wrapper">
+        <div class="image">
+            <img src="/Image Assets/GambarRumahSakit.jpg" alt="">
         </div>
-
-        <div class="appointment-section">
-            <h3>Jadwal Dokter</h3>
-            <div class="schedule-buttons">
-                <button class="schedule-btn">Jumat, 18 Oktober 2024</button>
-                <button class="schedule-btn">Sabtu, 19 Oktober 2024</button>
-                <button class="schedule-btn">Minggu, 20 Oktober 2024</button>
-            </div>
-
-            <h3>Jam Praktik</h3>
-            <div class="time-buttons">
-                <button class="time-btn">09:00</button>
-                <button class="time-btn">16:00</button>
-                <button class="time-btn">17:00</button>
-                <button class="time-btn">18:00</button>
-                <button class="time-btn">19:00</button>
-            </div>
-
-            <div class="action-buttons">
-                <button class="btn back-btn">Back</button>
-                <button class="btn confirm-btn" onclick="showSuccessPopup()">Konfirmasi</button>
-            </div>
-        </div>
-    </main>
-
-    <!-- Pop-up -->
-    <div id="success-popup" class="popup">
-        <div class="popup-content">
-            <p>Berhasil Membuat Janji Temu</p>
-            <button class="btn close-btn" onclick="hidePopup()">Tutup</button>
+        
+        <div class="wrapper-form">
+            <form action="/pasien/jadwaldokter" method="post">
+                <h2>Pilih Jam Mulai</h2>
+                <table>
+                        <td><label>Jam Mulai:</label></td>
+                        <td>
+                            <div class="radio-group">
+                                <input type="radio" id="15:00" name="jam_mulai" value="15:00" required>
+                                <label for="15:00">15:00</label>
+                                <input type="radio" id="16:00" name="jam_mulai" value="16:00">
+                                <label for="16:00">16:00</label>
+                                <input type="radio" id="17:00" name="jam_mulai" value="17:00">
+                                <label for="17:00">17:00</label>
+                                <input type="radio" id="18:00" name="jam_mulai" value="18:00">
+                                <label for="18:00">18:00</label>
+                                <input type="radio" id="19:00" name="jam_mulai" value="19:00">
+                                <label for="19:00">19:00</label>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                </table>
+                <button type="button" class="btn-back">Kembali</button>
+                <input type="hidden" id="idKlinikInput" name="id_klinik">
+                <button type="submit" class="btn-submit">Daftar</button>
+            </form>
         </div>
     </div>
 </body>

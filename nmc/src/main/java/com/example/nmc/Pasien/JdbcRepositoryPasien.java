@@ -70,4 +70,15 @@ public class JdbcRepositoryPasien implements PasienRepository {
         }
     }
 
+    @Override
+    public Optional<String> findNorekammedisByNoHP(String nohppasien) {
+        String sql = "SELECT norekammedispasien FROM pasien WHERE nohppasien = ?";
+        try {
+            String norekammedis = jdbcTemplate.queryForObject(sql, new Object[]{nohppasien}, String.class);
+            return Optional.ofNullable(norekammedis);
+        } catch (Exception e) {
+            return Optional.empty(); // Jika tidak ditemukan
+        }
+    }
+
 }

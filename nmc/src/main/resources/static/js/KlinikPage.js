@@ -1,28 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const signIn = document.querySelector('.button');
     const klinikButtons = document.querySelectorAll('.klinik-container button'); // Pilih tombol klinik-container
-
-    // Fungsi untuk mengubah warna latar belakang tombol Sign In
-    function changeBackgroundWhite() {
-        signIn.style.backgroundColor = 'white';
-    }
-    function changeBackgroundBlue() {
-        signIn.style.backgroundColor = 'lightblue';
+    // Ambil ID Klinik dari localStorage
+    const idKlinik = localStorage.getItem("idKlinik");
+    if (idKlinik) {
+        console.log(`Klinik ID Terpilih: ${idKlinik}`);
+        // Logika lain seperti memuat dokter berdasarkan idKlinik
     }
 
-    // Fungsi untuk berpindah halaman ke halaman login
-    function pindahHalaman() {
-        window.location.href = "PelangganSignIn.html";
+    // Tombol "Home" untuk kembali ke halaman utama
+    const homeButton = document.querySelector(".home");
+    if (homeButton) {
+        homeButton.addEventListener("click", function () {
+            window.location.href = "/pasien/main"; // Redirect ke /main
+        });
     }
 
-    // Event Listener untuk tombol Sign In
-    if (signIn) { // Cek apakah tombol Sign In ada
-        signIn.addEventListener('mouseover', changeBackgroundWhite);
-        signIn.addEventListener('mouseout', changeBackgroundBlue);
-        signIn.addEventListener('click', pindahHalaman);
+    // Tombol "Lihat Jadwal" pada setiap dokter
+    const doctorButtons = document.querySelectorAll(".doctor-card button");
+    if (doctorButtons.length > 0) {
+        doctorButtons.forEach((button, index) => {
+            button.addEventListener("click", function () {
+                const idDokter = index + 1; // ID dokter dimulai dari 1
+                localStorage.setItem("idDokter", idDokter);
+                window.location.href = "jadwaldokter"; // Redirect ke /jadwaldokter
+            });
+        });
     }
-
-    // Fungsi untuk menangani klik pada tombol klinik-container
     function pilihKlinik(event) {
         const button = event.target;
         let idKlinik = 0;

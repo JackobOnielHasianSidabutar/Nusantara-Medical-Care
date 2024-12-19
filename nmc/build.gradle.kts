@@ -32,6 +32,7 @@ dependencies {
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	//implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation ("org.postgresql:postgresql:42.6.0")
 	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

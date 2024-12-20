@@ -9,8 +9,10 @@ import lombok.Data;
 public class Pendaftaran {
     private int idPendaftaran;
     private LocalDate tglPendaftaran;
+    private String statusPendaftaran = "Online";
     private LocalTime jamMulai;
     private LocalTime jamAkhir;
     private int idKlinik;
     private int idAdministrator;
+
 }

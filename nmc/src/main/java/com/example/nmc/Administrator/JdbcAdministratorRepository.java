@@ -23,7 +23,11 @@ public class JdbcAdministratorRepository implements AdministratorRepository {
     @Override
     public void mencatatTransaksi(Transaksi transaksi) throws Exception {
         String sql = "INSERT INTO Transaksi (tanggalTransaksi, totalTransaksi, jenisTransaksi) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, transaksi.getTanggalTransaksi(), transaksi.getTanggalTransaksi(), transaksi.getJenisTransaksi());
+        try {
+            jdbcTemplate.update(sql, transaksi.getTanggalTransaksi(), transaksi.getTanggalTransaksi(), transaksi.getJenisTransaksi());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

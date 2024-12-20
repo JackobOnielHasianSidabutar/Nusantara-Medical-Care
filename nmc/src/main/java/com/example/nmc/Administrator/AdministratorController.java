@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class AdministratorController {
     AdministratorRepository repo;
 
     @Autowired
-    AdministratorService service;
+    AdministratorService administratorService;
     
     @Autowired
     private PasienService pasienService;
@@ -65,15 +66,44 @@ public class AdministratorController {
         return "AdminSistemMain";
     }
 
-    @PostMapping("bayar")
-    public String addTransaksi(@Valid @ModelAttribute Transaksi transaksi) {
-        boolean check = service.transaksi(transaksi);
-
-        if(check==false) {
-            return null;
+    private LocalDate parseTanggal(String tanggal) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            return LocalDate.parse(tanggal, formatter);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Format tanggal tidak valid: " + tanggal);
         }
-        return "AdminMain";
     }
+
+    @PostMapping("bayar")
+    public String addTransaksi(
+        @RequestParam("tanggaltransaksi") String tanggaltransaksi,
+        @RequestParam("totaltransaksi") double totaltransaksi,
+        @RequestParam("jenistransaksi") String jenistransaksi
+    ) {
+        try {
+            // Parsing tanggal
+            LocalDate tglTransaksi = parseTanggal(tanggaltransaksi);
+
+            // Membuat objek transaksi
+            Transaksi transaksi = new Transaksi(tglTransaksi, totaltransaksi, jenistransaksi);
+
+            // Menyimpan transaksi melalui service
+            administratorService.transaksi(transaksi);
+
+            // Redirect ke halaman utama
+            return "redirect:/administrator/main";
+        } catch (IllegalArgumentException e) {
+            // Menangani kesalahan parsing tanggal
+            System.err.println("Format tanggal tidak valid: " + e.getMessage());
+            return "redirect:/error?message=Invalid+date+format";
+        } catch (Exception e) {
+            // Menangani kesalahan umum lainnya
+            e.printStackTrace();
+            return "redirect:/error?message=An+unexpected+error+occurred";
+        }
+}
+
 
     // @PostMapping("/main")
     // public String dokterMain(@RequestParam String usernameDokter, @RequestParam String passwordDokter, Model model) {
@@ -91,7 +121,7 @@ public class AdministratorController {
     public String showAdminPendaftaran() {
         return "AdminPendaftaran";
     }
-    
+
     @PostMapping("/pendaftaran")
     public String saveAdminPendaftaran(
         @RequestParam String nama_lengkap,

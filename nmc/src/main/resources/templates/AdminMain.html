@@ -19,7 +19,7 @@
     </header>
 
     <div class="blue-bar">
-        <span>Selamat datang, <span th:text="${name}">Dokter</span></span>
+        <span>Selamat datang, Administrator</span>
         <img src="/Image Assets/icons8-person-50.png" alt="">
     </div>
 
@@ -58,74 +58,22 @@
     <div id="popupBayar" class="popup">
         <div class="popup-content">
             <h3 id="popupTitle">Rincian Pembayaran</h3>
-            <form>
-                <label for="rekamMedis">No Rekam Medis:</label>
-                <input type="text" id="rekamMedis" value="NMC-20240101" readonly>
-
-                <label for="namaPasien">Nama Lengkap:</label>
-                <input type="text" id="namaPasien" value="Feliks Mindo Tua Sitorus" readonly>
+            <form action="/administrator/bayar" method="post">
 
                 <label for="tanggalPembayaran">Tanggal Pembayaran:</label>
-                <input type="text" id="namaPasien" value="13/05/2022" readonly>
-
-                <label for="biayaAdministrasi">Biaya Administrasi:</label>
-                <input type="text" id="namaPasien" value="Rp 50.000" readonly>
-
-                <label for="biayaTindakan">Biaya Tindakan:</label>
-                <input type="text" id="namaPasien" value="Rp 50.000" readonly>
+                <input type="date" name="tanggaltransaksi" id="namaPasien">
 
                 <label for="totalPembayaran">Total Pembayaran:</label>
-                <input type="text" id="totalPembayaran" value="">
+                <input type="number" name="totaltransaksi" id="totalPembayaran" min="0" step="0.01">
+
+                <p>Metode Pembayaran</p>
+                    <input type="radio" name="jenistransaksi" value="cash" id="Tunai">
+                    <label for="Tunai">Tunai</label>
+                    <input type="radio" name="jenistransaksi" value="transfer" id="non-Tunai">
+                    <label for="non-Tunai">Non Tunai</label>
 
                 <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
                 <button type="submit" class="btn submit-btn">Konfirmasi</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Popup Daful -->
-    <div id="popupDaful" class="popup">
-        <div class="popup-content">
-            <h3>Informasi Pasien</h3>
-            <form>
-                <label>No Rekam Medis:</label>
-                <input type="text" value="NMC-20240101" readonly>
-                <label>Nama Lengkap:</label>
-                <input type="text" value="Feliks Mindo Tua Sitorus" readonly>
-                <label>Jenis Kelamin:</label>
-                <input type="text" value="Laki-laki" readonly>
-                <label>Klinik Tujuan:</label>
-                <input type="text" value="Klinik Mata" readonly>
-                <label>Nama Dokter:</label>
-                <input type="text" value="Dr. Jackob">
-                <label>Tanggal Periksa:</label>
-                <input type="text" value="20/11/2024" readonly>
-                <label>Jam Periksa:</label>
-                <input type="text" value="09.00">
-                <button type="button" class="btn close-btn" onclick="hidePopup()">Kembali</button>
-                <button type="submit" class="btn submit-btn">Konfirmasi</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Popup Pasien Step 1 -->
-    <div id="popupPasienStep1" class="popup" hidden>
-        <div class="popup-content">
-            <h3>Registrasi Pasien</h3>
-            <form>
-                <label>Nama Lengkap:</label>
-                <input type="text">
-                <label>Tanggal Lahir:</label>
-                <input type="date">
-                <label>Jenis Kelamin:</label>
-                <select>
-                    <option>Pria</option>
-                    <option>Wanita</option>
-                </select>
-                <label>Nomor Telepon:</label>
-                <input type="text">
-                <button type="button" class="btn close-btn" onclick="hidePopup()">Cancel</button>
-                <button type="button" class="btn submit-btn" onclick="showPopup('popupPasienStep2')">Next</button>
             </form>
         </div>
     </div>

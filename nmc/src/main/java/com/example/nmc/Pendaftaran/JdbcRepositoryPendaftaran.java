@@ -20,27 +20,25 @@ public class JdbcRepositoryPendaftaran implements PendaftaranRepository {
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
-
     @Override
     public void savePendaftaran(Pendaftaran pendaftaran) {
         String sqlGetAdmin = "SELECT idadministrator FROM administrator LIMIT 1";
         Integer idAdministrator = jdbcTemplate.queryForObject(sqlGetAdmin, Integer.class);
-        String sql = "INSERT INTO pendaftaran (idpendaftaran, tglpendaftaran, jammulai, jamakhir, idklinik, idadministrator) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pendaftaran (idpendaftaran, tglpendaftaran, statuspendaftaran, jammulai, jamakhir) "
+                + "VALUES (?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(sql,
                 pendaftaran.getIdPendaftaran(),
-                java.sql.Date.valueOf(pendaftaran.getTglPendaftaran()), 
+                java.sql.Date.valueOf(pendaftaran.getTglPendaftaran()),
+                pendaftaran.getStatusPendaftaran(),
                 pendaftaran.getJamMulai(),       
-                pendaftaran.getJamAkhir(),
-                pendaftaran.getIdKlinik(),
-                idAdministrator
+                pendaftaran.getJamAkhir()
         );
     }
     @Override
-    public void savePendaftaranPasien(int idPendaftaran, String norekammedispasien) {
-        String sql = "INSERT INTO pendaftaranpasien (idpendaftaran, norekammedispasien) VALUES (?, ?)";
-        jdbcTemplate.update(sql, idPendaftaran, norekammedispasien);
+    public void savePendaftaranPasien(String norekammedispasien, int idPendaftaran) {
+        String sql = "INSERT INTO pasienpendaftaran (norekammedispasien, idpendaftaran) VALUES (?, ?)";
+        jdbcTemplate.update(sql, norekammedispasien, idPendaftaran);
     }
     @Override
     public String findNorekammedisByNoHP(String nohppasien) {

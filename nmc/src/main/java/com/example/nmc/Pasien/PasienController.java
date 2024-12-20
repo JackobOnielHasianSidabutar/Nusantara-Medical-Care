@@ -185,7 +185,7 @@ public class PasienController {
             pendaftaranRepository.savePendaftaran(pendaftaran);
 
             // Simpan data ke tabel pendaftaranpasien
-            pendaftaranRepository.savePendaftaranPasien(newId, norekammedispasien);
+            pendaftaranRepository.savePendaftaranPasien(norekammedispasien, newId);
 
             return "redirect:/pasien/main";
         } catch (DateTimeParseException e) {

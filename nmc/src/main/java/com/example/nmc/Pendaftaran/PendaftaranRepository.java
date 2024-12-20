@@ -4,5 +4,5 @@ public interface PendaftaranRepository {
     int getMaxIdPendaftaran();
     String findNorekammedisByNoHP(String nohppasien);
     void savePendaftaran(Pendaftaran pendaftaran);
-    void savePendaftaranPasien(int idPendaftaran, String norekammedispasien);
+    void savePendaftaranPasien(String norekammedispasien, int idPendaftaran);
 }

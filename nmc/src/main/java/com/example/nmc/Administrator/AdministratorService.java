@@ -11,13 +11,17 @@ public class AdministratorService {
     @Autowired
     private AdministratorRepository repo;
 
-    public boolean transaksi(Transaksi transaksi) {
-        try {
-            this.repo.mencatatTransaksi(transaksi);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+    // public boolean transaksi(Transaksi transaksi) {
+    //     try {
+    //         this.repo.mencatatTransaksi(transaksi);
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //         return false;
+    //     }
+    //     return true;
+    // }
+
+    public void transaksi(Transaksi transaksi) throws Exception {
+        this.repo.mencatatTransaksi(transaksi);
     }
 }

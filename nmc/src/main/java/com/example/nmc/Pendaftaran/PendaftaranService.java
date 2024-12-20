@@ -16,6 +16,6 @@ public class PendaftaranService {
         int maxId = pendaftaranRepository.getMaxIdPendaftaran();
         pendaftaran.setIdPendaftaran(maxId + 1); // Tetapkan ID baru
         pendaftaranRepository.savePendaftaran(pendaftaran);
-        pendaftaranRepository.savePendaftaranPasien(pendaftaran.getIdPendaftaran(), norekammedispasien);
+        pendaftaranRepository.savePendaftaranPasien(norekammedispasien, pendaftaran.getIdPendaftaran());
     }
 }

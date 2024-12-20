@@ -46,3 +46,24 @@ function hidingPopup(popupId) {
 //         showPopup('popupPasienStep1'); // Tampilkan popup langkah 1
 //     });
 // });
+
+function showPopup(id) {
+    fetch(`/api/pasien/${id}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                document.getElementById('namaPasien').value = data.namapasien;
+                document.getElementById('tanggalLahir').value = data.tgllahirpasien;
+                document.getElementById('jenisKelamin').value = data.jeniskelaminpasien;
+                document.getElementById('nomorTelepon').value = data.nohppasien;
+                document.querySelector('.popup-check').hidden = false;
+            } else {
+                alert('Pasien tidak ditemukan.');
+            }
+        })
+        .catch(error => console.error('Error fetching pasien:', error));
+}
+
+function hidePopup() {
+    document.querySelector('.popup-check').hidden = true;
+}

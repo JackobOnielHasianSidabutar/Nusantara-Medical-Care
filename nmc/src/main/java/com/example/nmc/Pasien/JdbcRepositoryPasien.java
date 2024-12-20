@@ -81,4 +81,11 @@ public class JdbcRepositoryPasien implements PasienRepository {
         }
     }
 
+    @Override
+    public Optional<Pasien> findById(String id) {
+        return Optional.empty();
+    }
+
+    
+
 }

@@ -1,7 +1,9 @@
 package com.example.nmc.Dokter;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.nmc.Administrator.AdministratorRepository;
+import com.example.nmc.DTO.PendaftaranPasien;
 import com.example.nmc.Diagnosa.Diagnosa;
 import com.example.nmc.Diagnosa.DiagnosaService;
 import com.example.nmc.Diagnosa.jdbcDiagnosaRepository;
@@ -21,6 +25,9 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/dokter")
 public class DokterController {
 
+    @Autowired
+    private AdministratorRepository repo;
+
     private final DiagnosaService diagnosaService;
     private final DokterService dokterService;
 
@@ -31,8 +38,10 @@ public class DokterController {
     //     return "DokterMain"; 
     // }
 
-    @GetMapping("main")
-    public String indexMain() {
+    @GetMapping("/main")
+    public String indexMain(Model model) {
+        List<PendaftaranPasien> pendaftaranList = this.repo.showAll();
+        model.addAttribute("pendaftaranList", pendaftaranList);
         return "DokterMain";
     }
 

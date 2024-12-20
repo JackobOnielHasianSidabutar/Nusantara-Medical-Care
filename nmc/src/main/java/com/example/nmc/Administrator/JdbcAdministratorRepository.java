@@ -24,7 +24,7 @@ public class JdbcAdministratorRepository implements AdministratorRepository {
     public void mencatatTransaksi(Transaksi transaksi) throws Exception {
         String sql = "INSERT INTO Transaksi (tanggalTransaksi, totalTransaksi, jenisTransaksi) VALUES (?, ?, ?)";
         try {
-            jdbcTemplate.update(sql, transaksi.getTanggalTransaksi(), transaksi.getTanggalTransaksi(), transaksi.getJenisTransaksi());
+            jdbcTemplate.update(sql, transaksi.getTanggalTransaksi(), transaksi.getTotalTransaksi(), transaksi.getJenisTransaksi());
         } catch (Exception e) {
             e.printStackTrace();
         }

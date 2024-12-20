@@ -6,14 +6,8 @@ import lombok.Data;
 
 @Data
 public class Transaksi {
+    private int idTransaksi;
     private LocalDate tanggalTransaksi;
     private double totalTransaksi;
     private String jenisTransaksi;
-
-    public Transaksi(LocalDate tanggalTransaksi, double totalTransaksi, String jenisTransaksi) {
-        this.tanggalTransaksi = tanggalTransaksi;
-        this.totalTransaksi = totalTransaksi;
-        this.jenisTransaksi = jenisTransaksi;
-    }
-    
 }

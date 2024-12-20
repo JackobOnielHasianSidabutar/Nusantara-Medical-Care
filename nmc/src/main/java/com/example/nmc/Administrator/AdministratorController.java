@@ -86,7 +86,10 @@ public class AdministratorController {
             LocalDate tglTransaksi = parseTanggal(tanggaltransaksi);
 
             // Membuat objek transaksi
-            Transaksi transaksi = new Transaksi(tglTransaksi, totaltransaksi, jenistransaksi);
+            Transaksi transaksi = new Transaksi();
+            transaksi.setTanggalTransaksi(tglTransaksi);
+            transaksi.setTotalTransaksi(totaltransaksi);
+            transaksi.setJenisTransaksi(jenistransaksi);
 
             // Menyimpan transaksi melalui service
             administratorService.transaksi(transaksi);

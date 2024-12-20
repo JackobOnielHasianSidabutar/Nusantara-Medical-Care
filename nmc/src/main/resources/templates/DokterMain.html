@@ -19,7 +19,7 @@
     </header>
 
     <div class="blue-bar">
-        <span>Selamat datang, dr. <span th:text="${name}">Dokter</span></span>
+        <span>Selamat datang, Dokter</span>
         <img src="/Image Assets/icons8-person-50.png" alt="">
     </div>
 
@@ -31,17 +31,19 @@
                     <th>No Rekam Medis</th>
                     <th>Nama Pasien</th>
                     <th>Waktu Konsultasi</th>
-                    <th>Status Pemeriksaan</th>
+                    <th>Status Pendaftaran</th>
                     <th>Action</th>
                 </tr>
                 <tr>
-                    <td>NMC-20240101</td>
-                    <td>Feliks Mindo Tua Sitorus</td>
-                    <td>13/05/2022</td>
-                    <td>-</td>
-                    <td>
-                        <button class="action-btn" onclick="showPopup()">Check</button>
-                    </td>
+                    <tr th:each="pendaftaran : ${pendaftaranList}">
+                        <td th:text="${pendaftaran.norekammedispasien}">N/A</td>
+                        <td th:text="${pendaftaran.namapasien}">N/A</td>
+                        <td th:text="${pendaftaran.tglpendaftaran}">N/A</td>
+                        <td th:text="${pendaftaran.statuspendaftaran}">N/A</td>
+                        <td>
+                            <button class="action-btn" onclick="showPopup()">Check</button>
+                        </td>
+                    </tr>  
                 </tr>
             </table>
         </div>
